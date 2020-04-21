@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 	#デバイス機能実行前にconfigure_permitted_parametersの実行をする。
 	protect_from_forgery with: :exception
 
-  protected
+  
   def after_sign_in_path_for(resource)
     user_path(resource)
   end
@@ -13,6 +13,7 @@ class ApplicationController < ActionController::Base
     root_path
   end
 
+protected
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email])
     #sign_upの際にnameのデータ操作を許。追加したカラム。
